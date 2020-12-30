@@ -58,3 +58,8 @@ fi
 echo "Installing repo"
 sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
 sudo chmod a+rx /usr/local/bin/repo
+
+# Install Zsh And Setup
+sudo apt install zsh
+chsh -s /bin/zsh
+bash zsh/setup.sh
