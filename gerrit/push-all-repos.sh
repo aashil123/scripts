@@ -5,11 +5,10 @@
 # This again, will have to be adapted based on your setup.
 
 cwd=$PWD
-cd ~/nougat || exit
-PROJECTS="$(grep 'aosip' .repo/manifests/snippets/aosip.xml | awk '{print $2}' | awk -F'"' '{print $2}' | uniq | grep -v caf)"
+PROJECTS="$(grep 'styx' .repo/manifests/snippets/styx.xml | awk '{print $2}' | awk -F'"' '{print $2}' | uniq | grep -v caf)"
 for project in ${PROJECTS}; do
     cd "$project" || exit
-    git push "$(git remote -v | head -1 | awk '{print $2}' | sed -e 's/https:\/\/github.com\/AOSiP/ssh:\/\/localhost:29418\/AOSIP/')" HEAD:refs/heads/nougat-mr2
+    git push -f -o skip-validation "$(git remote -v | head -1 | awk '{print $2}' | sed -e 's/https:\/\/github.com\/StyxProject/ssh:\/\/aashil123@gerrit.styxproject.tk:29418\/StyxProject/')" HEAD:refs/heads/R
     cd - || exit
 done
 cd "$cwd" || exit
